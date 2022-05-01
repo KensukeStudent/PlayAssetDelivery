@@ -1,0 +1,29 @@
+ManifestFileVersion: 0
+CRC: 1844806770
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 3831dc4c2c47cbea70be276345665fd2
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9ecc2e8d717629781f019ff30323ba53
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/pre/red.png
+- Assets/pre/selectFrame.png
+- "Assets/pre/\u30D1\u30BA\u30EB\u30A4\u30F3\u30B2\u30FC\u30E0\u753B\u9762\u8A2D\u8A08.png"
+- Assets/pre/black 1.png
+- Assets/pre/black.png
+- Assets/pre/yellow.png
+- Assets/pre/bule.png
+- Assets/pre/white.png
+- Assets/pre/PazleGame.txt
+Dependencies: []
