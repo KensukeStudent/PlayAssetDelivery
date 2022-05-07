@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 909483466
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: movie
+      Dependencies: {}

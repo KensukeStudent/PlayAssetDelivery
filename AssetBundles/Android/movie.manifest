@@ -1,0 +1,35 @@
+ManifestFileVersion: 0
+CRC: 2009161809
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e2b23dcf62087f527c611ea874996d47
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 0c99d65ef51abc14890fd8bfd39eeeba
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 20
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 81
+  Script: {instanceID: 0}
+- Class: 104
+  Script: {instanceID: 0}
+- Class: 157
+  Script: {instanceID: 0}
+- Class: 196
+  Script: {instanceID: 0}
+- Class: 328
+  Script: {instanceID: 0}
+- Class: 329
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Scenes/Movie.unity
+Dependencies: []
