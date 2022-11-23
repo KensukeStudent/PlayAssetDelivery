@@ -1,0 +1,16 @@
+{
+    "Entries": [
+        {
+            "BundleBuildPath": "Library/com.unity.addressables/aa/Android/Android/fastfollowcontent_assets_all_15c16475abdeb6f9efc37c83705884d4.bundle",
+            "AssetsSubfolderPath": "CustomFastFollow.androidpack\\fastfollowcontent_assets_all_15c16475abdeb6f9efc37c83705884d4.bundle"
+        },
+        {
+            "BundleBuildPath": "Library/com.unity.addressables/aa/Android/Android/ondemandcontent_assets_all_4b2a046ded78abb28a46618ebcee25f6.bundle",
+            "AssetsSubfolderPath": "CustomOnDemand.androidpack\\ondemandcontent_assets_all_4b2a046ded78abb28a46618ebcee25f6.bundle"
+        },
+        {
+            "BundleBuildPath": "Library/com.unity.addressables/aa/Android/Android/ondemand2content_assets_all_018d76e5a8dd493e54e9f3fc20fb2161.bundle",
+            "AssetsSubfolderPath": "CustomOnDemand2.androidpack\\ondemand2content_assets_all_018d76e5a8dd493e54e9f3fc20fb2161.bundle"
+        }
+    ]
+}
