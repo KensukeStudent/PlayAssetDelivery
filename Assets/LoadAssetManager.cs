@@ -20,15 +20,23 @@ public class LoadAssetManager : MonoBehaviour
     {
         Debug.Log("assetPackNames : " + JsonUtility.ToJson(AndroidAssetPacks.GetCoreUnityAssetPackNames()));
 
-        Addressables.LoadAssetAsync<Sprite>("installtime/10MB_1").Completed += asset =>
-        {
-            installtime_image.sprite = asset.Result;
-        };
+        SetLoad("installtime", installtime_image);
 
-        // Addressables.LoadAssetAsync<Sprite>("ondemad/10MB_1").Completed += asset =>
-        // {
-        //     ondemand_image.sprite = asset.Result;
-        // };
+        SetLoad("ondemand", ondemand_image);
+    }
+
+    private void SetLoad(string address, Image _image)
+    {
+        Addressables.LoadAssetAsync<Sprite>(address).Completed += asset =>
+        {
+            if (asset.Result == null)
+            {
+                Debug.Log(string.Format("address : {0}は読み込まれませんでした", address));
+            }
+
+            _image.sprite = asset.Result;
+            Debug.Log(string.Format("address : {0} load complete!", address));
+        };
     }
 
     // // 異なる場合は別途指定
