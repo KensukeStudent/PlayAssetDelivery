@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "RF8R11KH5FK",
+    "m_SelectedDeviceId": "9CTAY1R10E",
     "m_SelectedPackage": {
-        "deviceId": "RF8R11KH5FK",
+        "deviceId": "9CTAY1R10E",
         "name": "com.TeamFairy.PlayAssetDelivery_Develop",
-        "processId": 5416,
+        "processId": 24109,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -12,12 +12,24 @@
             "deviceId": "RF8R11KH5FK",
             "name": "com.TeamFairy.PlayAssetDelivery_Develop",
             "processId": 28619,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "RF8R11KH5FK",
             "name": "com.TeamFairy.PlayAssetDelivery_Develop",
             "processId": 5416,
+            "exited": true
+        },
+        {
+            "deviceId": "9CTAY1R10E",
+            "name": "com.TeamFairy.PlayAssetDelivery_Develop",
+            "processId": 23521,
+            "exited": true
+        },
+        {
+            "deviceId": "9CTAY1R10E",
+            "name": "com.TeamFairy.PlayAssetDelivery_Develop",
+            "processId": 24109,
             "exited": false
         }
     ],

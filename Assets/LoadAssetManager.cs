@@ -1,4 +1,4 @@
-using Google.Play.AssetDelivery;
+// using Google.Play.AssetDelivery;
 //using Google.Android.AppBundle.Editor;
 //using Google.Android.AppBundle.Editor.AssetPacks;
 using System;
@@ -25,30 +25,30 @@ public class LoadAssetManager : MonoBehaviour
             installtime_image.sprite = asset.Result;
         };
 
-        Addressables.LoadAssetAsync<Sprite>("ondemad/10MB_1").Completed += asset =>
-        {
-            ondemand_image.sprite = asset.Result;
-        };
+        // Addressables.LoadAssetAsync<Sprite>("ondemad/10MB_1").Completed += asset =>
+        // {
+        //     ondemand_image.sprite = asset.Result;
+        // };
     }
 
-    // 異なる場合は別途指定
-    private void LoadAsset<T>(string assetPackName, string assetBundlePath, string assetName, Action<T> callBack = null) where T : UnityEngine.Object
-    {
-        var packRequest = PlayAssetDelivery.RetrieveAssetPackAsync(assetPackName);
-        packRequest.Completed += request =>
-        {
-            if (request.Status == AssetDeliveryStatus.Loaded ||
-            request.Status == AssetDeliveryStatus.Available)
-            {
-                var bundleCreateRequest = packRequest.LoadAssetBundleAsync(assetBundlePath);
-                bundleCreateRequest.completed += _ =>
-                {
-                    var asset = bundleCreateRequest.assetBundle.LoadAsset<T>(assetName);
-                    callBack?.Invoke(asset);
-                };
-            };
-        };
-    }
+    // // 異なる場合は別途指定
+    // private void LoadAsset<T>(string assetPackName, string assetBundlePath, string assetName, Action<T> callBack = null) where T : UnityEngine.Object
+    // {
+    //     var packRequest = PlayAssetDelivery.RetrieveAssetPackAsync(assetPackName);
+    //     packRequest.Completed += request =>
+    //     {
+    //         if (request.Status == AssetDeliveryStatus.Loaded ||
+    //         request.Status == AssetDeliveryStatus.Available)
+    //         {
+    //             var bundleCreateRequest = packRequest.LoadAssetBundleAsync(assetBundlePath);
+    //             bundleCreateRequest.completed += _ =>
+    //             {
+    //                 var asset = bundleCreateRequest.assetBundle.LoadAsset<T>(assetName);
+    //                 callBack?.Invoke(asset);
+    //             };
+    //         };
+    //     };
+    // }
 
     //private static void AssetDeliverySettings()
     //{

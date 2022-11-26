@@ -147,12 +147,13 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.TeamFairy.PlayAssetDelivery_Develop
+    Standalone: com.TeamFairy.PlayAssetDeliveryDevelop
   buildNumber:
     Standalone: 0
     iPhone: 0
     tvOS: 0
   overrideDefaultApplicationIdentifier: 0
-  AndroidBundleVersionCode: 58
+  AndroidBundleVersionCode: 62
   AndroidMinSdkVersion: 29
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
