@@ -59,6 +59,7 @@ namespace Google.Android.AppBundle.Editor.Internal
         /// </summary>
         private static void BuildAndRunDefault()
         {
+            // AssetDeliverySettings();
             var assetPackConfig = AssetPackConfigSerializer.LoadConfig();
             if (assetPackConfig.HasDeliveredAssetPacks())
             {
@@ -68,6 +69,17 @@ namespace Google.Android.AppBundle.Editor.Internal
             {
                 EmulateUnityBuildAndRun();
             }
+        }
+
+        /// <summary>
+        /// アセットパックに含めるディレクトリビルド
+        /// </summary>
+        private static void AssetDeliverySettings()
+        {
+            var assetPackConfig = new AssetPackConfig();
+            // アセットパックに含めるディレクトリ
+            assetPackConfig.AddAssetsFolder("adv", "相対パス", AssetPackDeliveryMode.InstallTime);
+            AssetPackConfigSerializer.SaveConfig(assetPackConfig);
         }
 
         /// <summary>

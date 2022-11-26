@@ -1,13 +1,26 @@
 {
-    "m_SelectedDeviceId": "",
+    "m_SelectedDeviceId": "RF8R11KH5FK",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "RF8R11KH5FK",
+        "name": "com.TeamFairy.PlayAssetDelivery_Develop",
+        "processId": 5416,
         "exited": false
     },
     "m_SelectedPriority": 0,
-    "m_KnownPackagesForSerialization": [],
+    "m_KnownPackagesForSerialization": [
+        {
+            "deviceId": "RF8R11KH5FK",
+            "name": "com.TeamFairy.PlayAssetDelivery_Develop",
+            "processId": 28619,
+            "exited": false
+        },
+        {
+            "deviceId": "RF8R11KH5FK",
+            "name": "com.TeamFairy.PlayAssetDelivery_Develop",
+            "processId": 5416,
+            "exited": false
+        }
+    ],
     "m_Tags": {
         "m_Entries": [
             {
@@ -41,9 +54,20 @@
         ]
     },
     "m_MemoryViewerState": {
-        "MemoryWindowHeight": 0.0,
-        "MemoryWindowWidth": 0.0,
-        "MemoryTypeEnabled": [],
+        "MemoryWindowHeight": 300.0,
+        "MemoryWindowWidth": 170.0,
+        "MemoryTypeEnabled": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
         "MemoryGroup": 2,
         "Behavior": 0
     },

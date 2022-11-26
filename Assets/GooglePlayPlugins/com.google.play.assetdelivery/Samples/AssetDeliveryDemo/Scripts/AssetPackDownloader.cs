@@ -114,7 +114,7 @@ namespace Google.Play.AssetDelivery.Samples.AssetDeliveryDemo
             var assetLocation = _request.GetAssetLocation(TextAssetPath);
             var assetFileStream = File.OpenRead(assetLocation.Path);
             var buffer = new byte[assetLocation.Size];
-            assetFileStream.Seek((long) assetLocation.Offset, SeekOrigin.Begin);
+            assetFileStream.Seek((long)assetLocation.Offset, SeekOrigin.Begin);
             assetFileStream.Read(buffer, /* offset= */ 0, buffer.Length);
             var fileContents = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
             DisplayTextBox.text = string.Format("Contents of file {0}: {1}", TextAssetPath, fileContents);

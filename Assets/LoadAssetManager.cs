@@ -1,36 +1,73 @@
 using Google.Play.AssetDelivery;
+//using Google.Android.AppBundle.Editor;
+//using Google.Android.AppBundle.Editor.AssetPacks;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Android;
 
 public class LoadAssetManager : MonoBehaviour
 {
-    AssetBundle assetBundle = null;
+    [SerializeField]
+    Image installtime_image = null;
 
     [SerializeField]
-    Image image = null;
+    Image ondemand_image = null;
 
     private void Start()
     {
-        StartCoroutine(LoadAssetBundleAsync("CustomOnDemand2"));
+        Debug.Log("assetPackNames : " + JsonUtility.ToJson(AndroidAssetPacks.GetCoreUnityAssetPackNames()));
+
+        Addressables.LoadAssetAsync<Sprite>("installtime/10MB_1").Completed += asset =>
+        {
+            installtime_image.sprite = asset.Result;
+        };
+
+        Addressables.LoadAssetAsync<Sprite>("ondemad/10MB_1").Completed += asset =>
+        {
+            ondemand_image.sprite = asset.Result;
+        };
     }
 
-    private IEnumerator LoadAssetBundleAsync(string assetBundleName)
+    // 異なる場合は別途指定
+    private void LoadAsset<T>(string assetPackName, string assetBundlePath, string assetName, Action<T> callBack = null) where T : UnityEngine.Object
     {
-        var bundleRequest = PlayAssetDelivery.RetrieveAssetBundleAsync(assetBundleName);
-
-        while (bundleRequest == null)
+        var packRequest = PlayAssetDelivery.RetrieveAssetPackAsync(assetPackName);
+        packRequest.Completed += request =>
         {
-            yield return null;
-        }
-        assetBundle = bundleRequest.AssetBundle;
-        yield return Addressables.LoadAssetsAsync<Sprite>("", (obj) =>
-        {
-            if (obj != null)
+            if (request.Status == AssetDeliveryStatus.Loaded ||
+            request.Status == AssetDeliveryStatus.Available)
             {
-                image.sprite = obj;
-            }
-        }).WaitForCompletion();
+                var bundleCreateRequest = packRequest.LoadAssetBundleAsync(assetBundlePath);
+                bundleCreateRequest.completed += _ =>
+                {
+                    var asset = bundleCreateRequest.assetBundle.LoadAsset<T>(assetName);
+                    callBack?.Invoke(asset);
+                };
+            };
+        };
     }
+
+    //private static void AssetDeliverySettings()
+    //{
+    //    var assetPackConfig = new AssetPackConfig();
+    //    // アセットパックに含めるディレクトリ
+    //    assetPackConfig.AddAssetsFolder("AssetPackName", "相対パス", AssetPackDeliveryMode.InstallTime);
+    //    AssetPackConfigSerializer.SaveConfig(assetPackConfig);
+    //}
+
+    // private static void BuildAndroidAppBundle()
+    // {
+    //     var assetPackConfig = AssetPackConfigSerializer.LoadConfig();
+    //     // 良しなに設定する
+    //     var options = new BuildPlayerOptions()
+    //     {
+    //         locationPathName = "application.aab",
+    //         target = BuildTarget.Android,
+    //         targetGroup = BuildTargetGroup.Android
+    //     };
+    //     Bundletool.BuildBundle(options, assetPackConfig);
+    // }
 }

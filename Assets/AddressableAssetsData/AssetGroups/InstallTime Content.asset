@@ -17,8 +17,12 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: ec8f08996746ef84c9dcac7fe44bec04
   m_SerializeEntries:
-  - m_GUID: 0f79838beedbe5942b52ef507dfc2400
-    m_Address: Cube
+  - m_GUID: b650c4ce5497d594c82df8acdade3969
+    m_Address: installtime/10MB_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 90a9ec548180edd49abc0ce4506572dc
+    m_Address: installtime/10MB_2
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

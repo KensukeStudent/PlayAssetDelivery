@@ -17,8 +17,12 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: a356251d8dcaf2447868f5336383593f
   m_SerializeEntries:
-  - m_GUID: 2dbbec26e5b259746ae6ab461c7c4dca
-    m_Address: Capsule
+  - m_GUID: 70c8410d4b42e424bab842452e2556ab
+    m_Address: ondemad/10MB_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2eaa6d43e36c35448bcec340ecb843b0
+    m_Address: ondemad/10MB_2
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
