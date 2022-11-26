@@ -1,4 +1,4 @@
-// using Google.Play.AssetDelivery;
+using Google.Play.AssetDelivery;
 //using Google.Android.AppBundle.Editor;
 //using Google.Android.AppBundle.Editor.AssetPacks;
 using System;
@@ -16,6 +16,9 @@ public class LoadAssetManager : MonoBehaviour
     [SerializeField]
     Image ondemand_image = null;
 
+    [SerializeField]
+    Image load_image = null;
+
     private void Start()
     {
         Debug.Log("assetPackNames : " + JsonUtility.ToJson(AndroidAssetPacks.GetCoreUnityAssetPackNames()));
@@ -23,6 +26,11 @@ public class LoadAssetManager : MonoBehaviour
         SetLoad("installtime", installtime_image);
 
         SetLoad("ondemand", ondemand_image);
+
+        LoadAssetPack<Sprite>("CustomOnDemand", "Assets/AddressableAssets/adv/", "10MB_1.JPG", (asset) =>
+        {
+            load_image.sprite = asset;
+        });
     }
 
     private void SetLoad(string address, Image _image)
@@ -39,43 +47,39 @@ public class LoadAssetManager : MonoBehaviour
         };
     }
 
-    // // 異なる場合は別途指定
-    // private void LoadAsset<T>(string assetPackName, string assetBundlePath, string assetName, Action<T> callBack = null) where T : UnityEngine.Object
-    // {
-    //     var packRequest = PlayAssetDelivery.RetrieveAssetPackAsync(assetPackName);
-    //     packRequest.Completed += request =>
-    //     {
-    //         if (request.Status == AssetDeliveryStatus.Loaded ||
-    //         request.Status == AssetDeliveryStatus.Available)
-    //         {
-    //             var bundleCreateRequest = packRequest.LoadAssetBundleAsync(assetBundlePath);
-    //             bundleCreateRequest.completed += _ =>
-    //             {
-    //                 var asset = bundleCreateRequest.assetBundle.LoadAsset<T>(assetName);
-    //                 callBack?.Invoke(asset);
-    //             };
-    //         };
-    //     };
-    // }
+    private void LoadAssetPack<T>(string assetPackName, string assetBundlePath, string assetName, Action<T> callBack = null) where T : UnityEngine.Object
+    {
+        // アセットパック名
+        var packRequest = PlayAssetDelivery.RetrieveAssetPackAsync(assetPackName);
+        if (packRequest == null)
+        {
+            Debug.Log(string.Format("ロードしたアセットパックは存在しません。アセットパック名 : {0}", assetPackName));
+            return;
+        }
 
-    //private static void AssetDeliverySettings()
-    //{
-    //    var assetPackConfig = new AssetPackConfig();
-    //    // アセットパックに含めるディレクトリ
-    //    assetPackConfig.AddAssetsFolder("AssetPackName", "相対パス", AssetPackDeliveryMode.InstallTime);
-    //    AssetPackConfigSerializer.SaveConfig(assetPackConfig);
-    //}
+        packRequest.Completed += request =>
+        {
+            if (request.Status == AssetDeliveryStatus.Loaded ||
+            request.Status == AssetDeliveryStatus.Available)
+            {
+                // 
+                var bundleCreateRequest = packRequest.LoadAssetBundleAsync(assetBundlePath);
+                if (bundleCreateRequest == null)
+                {
+                    Debug.Log(string.Format("ロードしたアセットバンドルパスは存在しません。パス : {0}", assetBundlePath));
+                    return;
+                }
 
-    // private static void BuildAndroidAppBundle()
-    // {
-    //     var assetPackConfig = AssetPackConfigSerializer.LoadConfig();
-    //     // 良しなに設定する
-    //     var options = new BuildPlayerOptions()
-    //     {
-    //         locationPathName = "application.aab",
-    //         target = BuildTarget.Android,
-    //         targetGroup = BuildTargetGroup.Android
-    //     };
-    //     Bundletool.BuildBundle(options, assetPackConfig);
-    // }
+                bundleCreateRequest.completed += _ =>
+                {
+                    var asset = bundleCreateRequest.assetBundle.LoadAsset<T>(assetName);
+                    if (asset == null)
+                    {
+                        Debug.Log(string.Format("ロードしたアセットバンドルは存在しません。アセットバンドル名 : {0}", assetName));
+                    }
+                    callBack?.Invoke(asset);
+                };
+            };
+        };
+    }
 }
